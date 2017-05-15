@@ -14,8 +14,12 @@ class TitleLabelView: UIView
     fileprivate var  style : LabelStyle
     fileprivate lazy var collectionView : UICollectionView =
         {
-          let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+          let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: self.layout)
           collectionView.dataSource = self
+          collectionView.registerCell(TitleLabelViewCell.self)
+          collectionView.backgroundColor = self.style.labelViewBackGroundColor
+          collectionView.bounces = false
+            
           return collectionView
     }()
     
@@ -23,7 +27,9 @@ class TitleLabelView: UIView
         {
           let layout = LabelLayout()
           layout.delegate = self
-            
+          layout.itemMargin = self.style.itemMargin
+          layout.lineMargin = self.style.lineMargin
+          layout.sectionInset = self.style.labelViewInsert
           return layout
     }()
     
@@ -31,6 +37,7 @@ class TitleLabelView: UIView
         self.titles = titles
         self.style = style
         super.init(frame: frame)
+        setupInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,39 +46,75 @@ class TitleLabelView: UIView
     
 }
 
+// MARK: - 对外提供的接口
 extension TitleLabelView
 {
-    func setupInit()
+    /// 增加items
+    func insertItems(titles : [String])
+    {
+        self.titles.append(contentsOf: titles)
+        reloadData()
+    }
+    
+    ///增加item
+    func inserItem(title :String)
+    {
+        titles.append(title)
+        reloadData()
+    }
+    
+    ///刷新数据
+    func reloadData()
+    {
+       collectionView.reloadData()
+    }
+}
+
+extension TitleLabelView
+{
+   fileprivate func setupInit()
     {
         addSubview(collectionView)
     }
-
+   
 }
 
+// MARK: - UICollectionViewDataSource
 extension TitleLabelView : UICollectionViewDataSource
 {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+   internal  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+   {
         return titles.count
-    }
+   }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+   internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeuResuableCell(indexPath) as TitleLabelViewCell
+        cell.titleLabel.text = titles[indexPath.row]
+        cell.titleLabel.textColor = style.textColor;
+        cell.cornerRadius = style.itemCornerRadius
+        cell.titleLabel.font = style.textFont
+        cell.titleLabel.backgroundColor = style.itemBackGroundColor
         
-        return UICollectionViewCell()
+        return cell
     }
 }
 
+
+// MARK: - LabelLayoutDategate
 extension TitleLabelView : LabelLayoutDategate
-{
-    
-    func labelLayout(_ layout: LabelLayout, widthForRowsAt indexPath: IndexPath) -> (currentWidth: CGFloat, nextWidth: CGFloat) {
+{    
+    internal func labelLayout(_ layout: LabelLayout, widthForRowsAt indexPath: IndexPath) -> CGFloat {
        
-        return (30,40)
+        let title = titles[indexPath.row]
+        let size = String.size(text: title, textFont: style.textFont)
+            
+        return size.width + 2
     }
     
-    func labelLayout(_ layout: LabelLayout, heightForRowAt indexPath: IndexPath) -> CGFloat
+   internal func labelLayout(_ layout: LabelLayout, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 10
+        return String.height(textFont: style.textFont)
     }
     
 }

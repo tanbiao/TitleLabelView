@@ -17,6 +17,10 @@
 		9D7012E21EC5B65200F6C8DF /* LoadNibProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7012DD1EC5B65200F6C8DF /* LoadNibProtocl.swift */; };
 		9D7012E31EC5B65200F6C8DF /* TitleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7012DE1EC5B65200F6C8DF /* TitleLabelView.swift */; };
 		9D7012E41EC5B65200F6C8DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7012DF1EC5B65200F6C8DF /* ViewController.swift */; };
+		9D7DCF601EC99275004369FA /* TitleLabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7DCF5E1EC99275004369FA /* TitleLabelViewCell.swift */; };
+		9D7DCF611EC99275004369FA /* TitleLabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7DCF5F1EC99275004369FA /* TitleLabelViewCell.xib */; };
+		9D7DCF651EC993A1004369FA /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7DCF641EC993A1004369FA /* Reusable.swift */; };
+		9D7DCF671EC9962C004369FA /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7DCF661EC9962C004369FA /* String + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		9D7012DD1EC5B65200F6C8DF /* LoadNibProtocl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadNibProtocl.swift; sourceTree = "<group>"; };
 		9D7012DE1EC5B65200F6C8DF /* TitleLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLabelView.swift; sourceTree = "<group>"; };
 		9D7012DF1EC5B65200F6C8DF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9D7DCF5E1EC99275004369FA /* TitleLabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLabelViewCell.swift; sourceTree = "<group>"; };
+		9D7DCF5F1EC99275004369FA /* TitleLabelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleLabelViewCell.xib; sourceTree = "<group>"; };
+		9D7DCF641EC993A1004369FA /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		9D7DCF661EC9962C004369FA /* String + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,10 @@
 				9D7012DC1EC5B65200F6C8DF /* LabelStyle.swift */,
 				9D7012DD1EC5B65200F6C8DF /* LoadNibProtocl.swift */,
 				9D7012DE1EC5B65200F6C8DF /* TitleLabelView.swift */,
+				9D7DCF661EC9962C004369FA /* String + Extension.swift */,
+				9D7DCF5E1EC99275004369FA /* TitleLabelViewCell.swift */,
+				9D7DCF641EC993A1004369FA /* Reusable.swift */,
+				9D7DCF5F1EC99275004369FA /* TitleLabelViewCell.xib */,
 				9D7012DF1EC5B65200F6C8DF /* ViewController.swift */,
 				9D7012C61EC5B60F00F6C8DF /* AppDelegate.swift */,
 				9D7012CA1EC5B60F00F6C8DF /* Main.storyboard */,
@@ -138,6 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7DCF611EC99275004369FA /* TitleLabelViewCell.xib in Resources */,
 				9D7012D41EC5B60F00F6C8DF /* LaunchScreen.storyboard in Resources */,
 				9D7012D11EC5B60F00F6C8DF /* Assets.xcassets in Resources */,
 				9D7012CC1EC5B60F00F6C8DF /* Main.storyboard in Resources */,
@@ -151,8 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7DCF601EC99275004369FA /* TitleLabelViewCell.swift in Sources */,
 				9D7012E31EC5B65200F6C8DF /* TitleLabelView.swift in Sources */,
+				9D7DCF671EC9962C004369FA /* String + Extension.swift in Sources */,
 				9D7012E11EC5B65200F6C8DF /* LabelStyle.swift in Sources */,
+				9D7DCF651EC993A1004369FA /* Reusable.swift in Sources */,
 				9D7012CF1EC5B60F00F6C8DF /* TitleLabelView.xcdatamodeld in Sources */,
 				9D7012C71EC5B60F00F6C8DF /* AppDelegate.swift in Sources */,
 				9D7012E41EC5B65200F6C8DF /* ViewController.swift in Sources */,
@@ -319,6 +335,7 @@
 				9D7012DA1EC5B60F00F6C8DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

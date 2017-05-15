@@ -11,7 +11,7 @@ import UIKit
 
 protocol LabelLayoutDategate : class
 {
-    func labelLayout(_ layout: LabelLayout, widthForRowsAt indexPath: IndexPath) -> (currentWidth: CGFloat,nextWidth:CGFloat)
+    func labelLayout(_ layout: LabelLayout, widthForRowsAt indexPath: IndexPath) -> CGFloat
     
     func labelLayout(_ layout: LabelLayout, heightForRowAt indexPath: IndexPath) -> CGFloat
    
@@ -22,12 +22,6 @@ class LabelLayout: UICollectionViewFlowLayout
     weak var delegate : LabelLayoutDategate?
     
     fileprivate var atributes = [UICollectionViewLayoutAttributes]()
-    
-    /**每列有几个*/
-    var cols : Int = 3
-
-    /**标签总数*/
-    var totalCount : Int = 10
     
     /*item之间的水平间距*/
     var itemMargin : CGFloat = 5
@@ -49,24 +43,50 @@ extension LabelLayout
         
         let collectionW = collectionView.bounds.width
 
-        let itemX : CGFloat = sectionInset.left
-        let itemY : CGFloat = sectionInset.top
+        var itemX : CGFloat = sectionInset.left
+        var itemY : CGFloat = sectionInset.top
+        
+        //当前行数的个数
+        var currentRowCols : Int = 0
         
         for i in 0..<itemCount {
             
             let indexPath = IndexPath(item: i, section: 0)
             
-            let currentW : CGFloat = delegate?.labelLayout(self, widthForRowsAt: indexPath).0 ?? 0
-            
-            let nextW : CGFloat = delegate?.labelLayout(self, widthForRowsAt: indexPath).1 ?? 0
+            let currentW : CGFloat = delegate?.labelLayout(self, widthForRowsAt: indexPath) ?? 0
             
             let itemH : CGFloat = delegate?.labelLayout(self, heightForRowAt: indexPath) ?? 10
+            
+            let itemMaxX  = atributes.last?.frame.maxX ?? (sectionInset.left + lineMargin)
+            
+            // 先判断在当前行的索引 在当前行
+            if itemMaxX + currentW + sectionInset.right + itemMargin * 2 - collectionW <= 0
+            {
+                //第一次来的时候在同一行的情况
+                
+                if i == 0
+                {
+                    itemX += lineMargin
+                }
+                else{
+                    
+                    itemX = itemMaxX + itemMargin
+                }
+            }
+            else
+            {
+                itemX = sectionInset.left + lineMargin
+                currentRowCols += 1
+            }
+            
+            itemY = sectionInset.top + (itemH + lineMargin)*CGFloat(currentRowCols)
             
             let atribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             
             atribute.frame = CGRect(x: itemX, y: itemY, width: currentW, height: itemH)
             
             atributes.append(atribute)
+
         }
         
     }
@@ -78,7 +98,8 @@ extension LabelLayout
     
     override var collectionViewContentSize: CGSize
         {
-            return CGSize()
+        let height = atributes.last?.frame.maxY ?? 0
+        return CGSize(width: 0, height: height + sectionInset.bottom + lineMargin)
     }
 
 }
