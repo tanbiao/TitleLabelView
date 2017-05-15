@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
      
         view.addSubview(labelView)
+        
+        
        
     }
     
@@ -33,6 +35,8 @@ class ViewController: UIViewController {
         let titles = ["张三"]
         
         labelView.insertItems(titles: titles)
+
+        print(labelView.contentHeight)
     }
    
     

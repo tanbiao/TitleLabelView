@@ -10,6 +10,11 @@ import UIKit
 
 class TitleLabelView: UIView
 {
+    var contentHeight : CGFloat
+        {
+       return collectionView.contentSize.height
+    }
+    
     fileprivate var  titles : [String]
     fileprivate var  style : LabelStyle
     fileprivate lazy var collectionView : UICollectionView =
@@ -54,6 +59,7 @@ extension TitleLabelView
     {
         self.titles.append(contentsOf: titles)
         reloadData()
+        scrollToBottom()
     }
     
     ///增加item
@@ -61,22 +67,29 @@ extension TitleLabelView
     {
         titles.append(title)
         reloadData()
+        scrollToBottom()
     }
     
     ///刷新数据
     func reloadData()
     {
-       collectionView.reloadData()
+        collectionView.reloadData()
     }
+
 }
 
 extension TitleLabelView
 {
-   fileprivate func setupInit()
+    fileprivate func setupInit()
     {
         addSubview(collectionView)
     }
-   
+    
+    fileprivate func scrollToBottom()
+    {
+        let indexPath = IndexPath(item: (titles.count - 1), section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: false)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -104,8 +117,8 @@ extension TitleLabelView : UICollectionViewDataSource
 // MARK: - LabelLayoutDategate
 extension TitleLabelView : LabelLayoutDategate
 {    
-    internal func labelLayout(_ layout: LabelLayout, widthForRowsAt indexPath: IndexPath) -> CGFloat {
-       
+    internal func labelLayout(_ layout: LabelLayout, widthForRowsAt indexPath: IndexPath) -> CGFloat
+    {
         let title = titles[indexPath.row]
         let size = String.size(text: title, textFont: style.textFont)
             

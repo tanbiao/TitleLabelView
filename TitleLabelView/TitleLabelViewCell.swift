@@ -10,7 +10,6 @@ import UIKit
 
 class TitleLabelViewCell: UICollectionViewCell,Reusable {
     
-    
     @IBOutlet weak var titleLabel: UILabel!
     
     var cornerRadius : CGFloat = 0
