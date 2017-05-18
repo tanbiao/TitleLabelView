@@ -12,7 +12,14 @@ class TitleLabelViewCell: UICollectionViewCell,Reusable {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    var cornerRadius : CGFloat = 0
+    var cornerRadius : CGFloat = 0.0
+        {
+          didSet
+          {
+            self.titleLabel.layer.cornerRadius = cornerRadius
+            self.titleLabel.layer.masksToBounds = true
+          }
+    }
     
     static var nib : UINib?
         {
@@ -21,9 +28,6 @@ class TitleLabelViewCell: UICollectionViewCell,Reusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-     
-        self.titleLabel.layer.cornerRadius = cornerRadius
-        self.titleLabel.layer.masksToBounds = true
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
         self.addGestureRecognizer(longPress)

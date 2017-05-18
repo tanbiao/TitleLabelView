@@ -107,7 +107,8 @@ extension LabelLayout
     override var collectionViewContentSize: CGSize
         {
         //不可以滚动
-        if !isScroll {
+        if !isScroll
+        {
           return CGSize()
         }
         let height = atributes.last?.frame.maxY ?? 0

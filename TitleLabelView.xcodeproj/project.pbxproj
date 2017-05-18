@@ -147,7 +147,6 @@
 				TargetAttributes = {
 					9D7012C21EC5B60F00F6C8DF = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W8ZBWMZ89E;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -321,7 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W8ZBWMZ89E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TitleLabelView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.TitleLabelView;
@@ -334,7 +333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W8ZBWMZ89E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TitleLabelView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.TitleLabelView;
