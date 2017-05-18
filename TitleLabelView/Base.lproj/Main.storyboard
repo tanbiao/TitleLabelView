@@ -29,14 +29,22 @@
                                     <action selector="btnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qcc-tS-4hh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FN9-JK-d8i" customClass="TitleLabelView" customModule="TitleLabelView" customModuleProvider="target">
+                                <rect key="frame" x="67" y="418" width="263" height="169"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="SZu-j0-cN7"/>
+                    <connections>
+                        <outlet property="titleLabelView" destination="FN9-JK-d8i" id="4RD-gd-QR1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="937" y="-571"/>
+            <point key="canvasLocation" x="936.79999999999995" y="-571.66416791604206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Ai-5C-LDc">

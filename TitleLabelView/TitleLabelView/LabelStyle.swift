@@ -11,30 +11,30 @@ import UIKit
 struct LabelStyle
 {
     //labelView内间距
-    let labelViewInsert = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var labelViewInsert = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     /**item之间的水平间距*/
-    let itemMargin : CGFloat = 10
+    var itemMargin : CGFloat = 10
     
     /// item之间的上下间距
-    let lineMargin : CGFloat = 10
+    var lineMargin : CGFloat = 10
    
     /// labelView的背景颜色
-    let labelViewBackGroundColor : UIColor = UIColor.cyan
+    var labelViewBackGroundColor : UIColor = UIColor.white
     
     /// item的文字颜色
-    let textColor : UIColor = UIColor.gray
+    var textColor : UIColor = UIColor.gray
     
     /// item的背景颜色
-    let itemBackGroundColor : UIColor = UIColor.green
+    var itemBackGroundColor : UIColor = UIColor.green
     
     /// item的圆角半径
-    let itemCornerRadius : CGFloat = 5
+    var itemCornerRadius : CGFloat = 5
     
     /// item的文字字体
-    let textFont :UIFont = UIFont.systemFont(ofSize: 14)
+    var textFont :UIFont = UIFont.systemFont(ofSize: 14)
     
     /// 是否可以滚动
-    let titleViewIsScroll : Bool = false
+    var LabelViewIsScroll : Bool = true
     
 }

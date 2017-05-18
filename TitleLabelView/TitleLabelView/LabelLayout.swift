@@ -28,7 +28,8 @@ class LabelLayout: UICollectionViewFlowLayout
     
     /*item之间的上下间距*/
     var lineMargin : CGFloat = 5
-    
+
+    /// 是否可以滚动
     var isScroll : Bool = true
  
 }

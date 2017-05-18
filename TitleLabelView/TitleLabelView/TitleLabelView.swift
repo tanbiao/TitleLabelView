@@ -10,7 +10,7 @@ import UIKit
 
 protocol TitleLabelViewDelegate :class
 {
-    func titleLabelView(_ labelView: TitleLabelView, didSelectItemAt indexPath: IndexPath)
+    func titleLabelView(_ labelView: TitleLabelView, didSelectItemAt index: Int)
 }
 
 class TitleLabelView: UIView
@@ -18,14 +18,15 @@ class TitleLabelView: UIView
     var contentHeight : CGFloat
         {
        return collectionView.contentSize.height
-
     }
     var selectCompletion : ((Int) -> Void)?
 
     weak var delegate : TitleLabelViewDelegate?
     
-    fileprivate var  titles : [String]
-    fileprivate var  style : LabelStyle
+    var  titles = [String]()
+    
+    var  style = LabelStyle()
+    
     fileprivate lazy var collectionView : UICollectionView =
         {
           let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: self.layout)
@@ -39,7 +40,7 @@ class TitleLabelView: UIView
                  
           return collectionView
     }()
-    
+
     
     fileprivate lazy var layout : LabelLayout =
         {
@@ -47,12 +48,18 @@ class TitleLabelView: UIView
           layout.delegate = self
           layout.itemMargin = self.style.itemMargin
           layout.lineMargin = self.style.lineMargin
-          layout.isScroll = self.style.titleViewIsScroll
+          layout.isScroll = self.style.LabelViewIsScroll
           layout.sectionInset = self.style.labelViewInsert
           return layout
     }()
     
-    //该方法已经设置了默认参数
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setupInit()
+    }
+    
+    //该构造方法已经设置了默认参数
     init(frame: CGRect,titles : [String], style : LabelStyle = LabelStyle() ,selectCompeltion : ((Int)->Void)? = nil ) {
         self.titles = titles
         self.style = style
@@ -61,8 +68,9 @@ class TitleLabelView: UIView
         self.selectCompletion = selectCompeltion
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    internal required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
     }
 
 }
@@ -119,7 +127,7 @@ extension TitleLabelView
     fileprivate func scrollToBottom()
     {
         let indexPath = IndexPath(item: (titles.count - 1), section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: false)
+        collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
     }
 }
 
@@ -151,9 +159,9 @@ extension TitleLabelView : UICollectionViewDelegate
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         selectCompletion?(indexPath.row)
-        delegate?.titleLabelView(self, didSelectItemAt: indexPath)
+        delegate?.titleLabelView(self, didSelectItemAt: indexPath.row)
     }
-
+    
 }
 
 // MARK: - LabelLayoutDategate
@@ -173,3 +181,21 @@ extension TitleLabelView : LabelLayoutDategate
     }
     
 }
+
+// MARK: - String + Extension
+extension String
+{
+    static func size(text : String, textFont : UIFont) -> CGSize
+    {
+        let atts = [NSFontAttributeName: textFont]
+        return (text as NSString).size(attributes: atts)
+    }
+    
+    static func height(textFont : UIFont) ->CGFloat
+    {
+        return size(text: "", textFont: textFont).height
+    }
+    
+}
+
+
