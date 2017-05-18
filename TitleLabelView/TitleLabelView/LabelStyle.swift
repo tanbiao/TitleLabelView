@@ -34,4 +34,7 @@ struct LabelStyle
     /// item的文字字体
     let textFont :UIFont = UIFont.systemFont(ofSize: 14)
     
+    /// 是否可以滚动
+    let titleViewIsScroll : Bool = false
+    
 }

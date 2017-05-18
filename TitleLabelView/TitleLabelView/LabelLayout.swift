@@ -28,6 +28,8 @@ class LabelLayout: UICollectionViewFlowLayout
     
     /*item之间的上下间距*/
     var lineMargin : CGFloat = 5
+    
+    var isScroll : Bool = true
  
 }
 
@@ -93,9 +95,7 @@ extension LabelLayout
             atributes.append(atribute)
 
         }
-        
-        
-        
+               
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -105,6 +105,10 @@ extension LabelLayout
     
     override var collectionViewContentSize: CGSize
         {
+        //不可以滚动
+        if !isScroll {
+          return CGSize()
+        }
         let height = atributes.last?.frame.maxY ?? 0
         return CGSize(width: 0, height: height + sectionInset.bottom)
     }

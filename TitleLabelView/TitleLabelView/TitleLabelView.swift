@@ -8,12 +8,21 @@
 
 import UIKit
 
+protocol TitleLabelViewDelegate :class
+{
+    func titleLabelView(_ labelView: TitleLabelView, didSelectItemAt indexPath: IndexPath)
+}
+
 class TitleLabelView: UIView
 {
     var contentHeight : CGFloat
         {
        return collectionView.contentSize.height
+
     }
+    var selectCompletion : ((Int) -> Void)?
+
+    weak var delegate : TitleLabelViewDelegate?
     
     fileprivate var  titles : [String]
     fileprivate var  style : LabelStyle
@@ -38,16 +47,18 @@ class TitleLabelView: UIView
           layout.delegate = self
           layout.itemMargin = self.style.itemMargin
           layout.lineMargin = self.style.lineMargin
+          layout.isScroll = self.style.titleViewIsScroll
           layout.sectionInset = self.style.labelViewInsert
           return layout
     }()
     
-    init(frame: CGRect,titles : [String], style : LabelStyle) {
+    //该方法已经设置了默认参数
+    init(frame: CGRect,titles : [String], style : LabelStyle = LabelStyle() ,selectCompeltion : ((Int)->Void)? = nil ) {
         self.titles = titles
         self.style = style
         super.init(frame: frame)
         setupInit()
-        
+        self.selectCompletion = selectCompeltion
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -134,10 +145,14 @@ extension TitleLabelView : UICollectionViewDataSource
     
 }
 
-
+// MARK: - UICollectionViewDelegate
 extension TitleLabelView : UICollectionViewDelegate
 {
-       
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        selectCompletion?(indexPath.row)
+        delegate?.titleLabelView(self, didSelectItemAt: indexPath)
+    }
 
 }
 

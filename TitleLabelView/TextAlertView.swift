@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VideoToolbox
 
 class TextAlertView: UIView
 {
@@ -31,6 +32,7 @@ class TextAlertView: UIView
         
         let size = String.size(text: text, textFont: textFont)
         self.frame.size = CGSize(width: size.width + 2, height: size.height + 2)
+        
         self.center.x = point.x
         self.center.y = point.y + size.height + 2
         
