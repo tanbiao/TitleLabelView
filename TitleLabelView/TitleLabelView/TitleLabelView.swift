@@ -41,7 +41,6 @@ class TitleLabelView: UIView
           return collectionView
     }()
 
-    
     fileprivate lazy var layout : LabelLayout =
         {
           let layout = LabelLayout()
@@ -53,24 +52,31 @@ class TitleLabelView: UIView
           return layout
     }()
     
+    //Xib创建的时候
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupInit()
+//        setupInit()
     }
     
     //该构造方法已经设置了默认参数
-    init(frame: CGRect,titles : [String], style : LabelStyle = LabelStyle() ,selectCompeltion : ((Int)->Void)? = nil ) {
+    init(frame: CGRect,titles : [String], style : LabelStyle = LabelStyle() ,selectCompeletion : ((Int)->Void)? = nil ) {
         self.titles = titles
         self.style = style
         super.init(frame: frame)
-        setupInit()
-        self.selectCompletion = selectCompeltion
+//        setupInit()
+        self.selectCompletion = selectCompeletion
     }
     
     internal required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.setupInit()
     }
 
 }

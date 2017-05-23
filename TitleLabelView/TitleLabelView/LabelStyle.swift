@@ -11,7 +11,7 @@ import UIKit
 struct LabelStyle
 {
     //labelView内间距
-    var labelViewInsert = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var labelViewInsert = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0)
 
     /**item之间的水平间距*/
     var itemMargin : CGFloat = 10

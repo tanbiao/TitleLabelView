@@ -111,6 +111,7 @@ extension LabelLayout
         {
           return CGSize()
         }
+        
         let height = atributes.last?.frame.maxY ?? 0
         return CGSize(width: 0, height: height + sectionInset.bottom)
     }

@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         var style = LabelStyle()
         style.textColor = UIColor.yellow
         style.itemBackGroundColor = UIColor.gray
+        style.labelViewBackGroundColor = UIColor.red
         self.titleLabelView.style = style
         
         //代码创建
