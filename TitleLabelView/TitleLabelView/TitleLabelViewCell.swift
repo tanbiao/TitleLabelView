@@ -12,12 +12,16 @@ class TitleLabelViewCell: UICollectionViewCell,Reusable {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var closeBtn: UIButton!
+    
     var cornerRadius : CGFloat = 0.0
         {
           didSet
           {
-            self.titleLabel.layer.cornerRadius = cornerRadius
-            self.titleLabel.layer.masksToBounds = true
+            layer.cornerRadius = cornerRadius
+            layer.masksToBounds = true
+            layer.borderColor = UIColor.gray.cgColor
+            layer.borderWidth = 1
           }
     }
     
@@ -28,16 +32,19 @@ class TitleLabelViewCell: UICollectionViewCell,Reusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
-        self.addGestureRecognizer(longPress)
-
+   
     }
     
-    func longPress(gesture : UILongPressGestureRecognizer)
+    @IBAction func closeBtn(_ sender: Any)
     {
-        print("我长按了.....")
+     
     }
-   
+    
+}
+
+/*UITapGestureDelegate*/
+extension TitleLabelViewCell : UIGestureRecognizerDelegate
+{
+    
 
 }

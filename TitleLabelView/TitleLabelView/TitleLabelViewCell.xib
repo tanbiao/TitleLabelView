@@ -19,24 +19,42 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhW-FY-TEa">
-                        <rect key="frame" x="0.0" y="0.0" width="121" height="41"/>
+                        <rect key="frame" x="5" y="5" width="111" height="31"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZl-zY-p0s">
+                        <rect key="frame" x="106" y="0.0" width="15" height="15"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.96470588239999999" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="9f2-mQ-JTq"/>
+                            <constraint firstAttribute="height" constant="15" id="Xcx-CG-Ekp"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="close"/>
+                        <connections>
+                            <action selector="closeBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Iz7-Vr-XdV"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dhW-FY-TEa" secondAttribute="trailing" id="E1H-GI-6QL"/>
-                <constraint firstItem="dhW-FY-TEa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZR7-oo-kAI"/>
-                <constraint firstAttribute="bottom" secondItem="dhW-FY-TEa" secondAttribute="bottom" id="a6t-XC-9JQ"/>
-                <constraint firstItem="dhW-FY-TEa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yMH-DB-O0w"/>
+                <constraint firstItem="yZl-zY-p0s" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3HR-R8-YRv"/>
+                <constraint firstAttribute="trailing" secondItem="dhW-FY-TEa" secondAttribute="trailing" constant="5" id="E1H-GI-6QL"/>
+                <constraint firstItem="dhW-FY-TEa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="ZR7-oo-kAI"/>
+                <constraint firstAttribute="bottom" secondItem="dhW-FY-TEa" secondAttribute="bottom" constant="5" id="a6t-XC-9JQ"/>
+                <constraint firstAttribute="trailing" secondItem="yZl-zY-p0s" secondAttribute="trailing" id="u3C-kL-7mT"/>
+                <constraint firstItem="dhW-FY-TEa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="yMH-DB-O0w"/>
             </constraints>
             <size key="customSize" width="121" height="41"/>
             <connections>
+                <outlet property="closeBtn" destination="yZl-zY-p0s" id="CaY-sw-eut"/>
                 <outlet property="titleLabel" destination="dhW-FY-TEa" id="mDW-zh-UVf"/>
             </connections>
             <point key="canvasLocation" x="69.5" y="49.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="close" width="85" height="85"/>
+    </resources>
 </document>

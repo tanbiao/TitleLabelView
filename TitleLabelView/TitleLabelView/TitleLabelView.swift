@@ -10,6 +10,7 @@ import UIKit
 
 protocol TitleLabelViewDelegate :class
 {
+    //selectItemIsDelete
     func titleLabelView(_ labelView: TitleLabelView, didSelectItemAt index: Int)
 }
 
@@ -17,6 +18,7 @@ class TitleLabelView: UIView
 {
     var contentHeight : CGFloat
         {
+         
        return collectionView.contentSize.height
     }
     var selectCompletion : ((Int) -> Void)?
@@ -26,6 +28,8 @@ class TitleLabelView: UIView
     var  titles = [String]()
     
     var  style = LabelStyle()
+    
+    fileprivate var isLongPressed : Bool = false
     
     fileprivate lazy var collectionView : UICollectionView =
         {
@@ -61,10 +65,10 @@ class TitleLabelView: UIView
     
     //该构造方法已经设置了默认参数
     init(frame: CGRect,titles : [String], style : LabelStyle = LabelStyle() ,selectCompeletion : ((Int)->Void)? = nil ) {
+        
         self.titles = titles
         self.style = style
         super.init(frame: frame)
-//        setupInit()
         self.selectCompletion = selectCompeletion
     }
     
@@ -93,7 +97,7 @@ extension TitleLabelView
     }
     
     ///增加item
-    func inserItem(title :String)
+    func insertItem(title :String)
     {
         titles.append(title)
         reloadData()
@@ -112,6 +116,7 @@ extension TitleLabelView
         {
            titles.removeLast(n)
         }
+        
         reloadData()
     }
     
@@ -135,6 +140,12 @@ extension TitleLabelView
         let indexPath = IndexPath(item: (titles.count - 1), section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
     }
+    
+    fileprivate func deleteItem(indexPath : IndexPath)
+    {
+        titles.remove(at: indexPath.row)
+        reloadData()
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -148,6 +159,8 @@ extension TitleLabelView : UICollectionViewDataSource
    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeuResuableCell(indexPath) as TitleLabelViewCell
+    
+        cell.backgroundColor = style.itemBackGroundColor
         cell.titleLabel.text = titles[indexPath.row]
         cell.titleLabel.textColor = style.textColor;
         cell.cornerRadius = style.itemCornerRadius
@@ -164,6 +177,7 @@ extension TitleLabelView : UICollectionViewDelegate
 {
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
+        deleteItem(indexPath: indexPath)
         selectCompletion?(indexPath.row)
         delegate?.titleLabelView(self, didSelectItemAt: indexPath.row)
     }
@@ -178,12 +192,12 @@ extension TitleLabelView : LabelLayoutDategate
         let title = titles[indexPath.row]
         let size = String.size(text: title, textFont: style.textFont)
             
-        return size.width + 2
+        return size.width + 2 + 10
     }
     
     internal func labelLayout(_ layout: LabelLayout, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return String.height(textFont: style.textFont) + 4
+        return String.height(textFont: style.textFont) + 4 + 10
     }
     
 }

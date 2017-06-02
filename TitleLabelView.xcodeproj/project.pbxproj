@@ -13,6 +13,8 @@
 		9D7012D11EC5B60F00F6C8DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7012D01EC5B60F00F6C8DF /* Assets.xcassets */; };
 		9D7012D41EC5B60F00F6C8DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7012D21EC5B60F00F6C8DF /* LaunchScreen.storyboard */; };
 		9D7012E41EC5B65200F6C8DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7012DF1EC5B65200F6C8DF /* ViewController.swift */; };
+		9D73748E1ED58BBB000E1C29 /* ShowTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D73748C1ED58BBB000E1C29 /* ShowTextViewController.swift */; };
+		9D73748F1ED58BBB000E1C29 /* ShowTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D73748D1ED58BBB000E1C29 /* ShowTextViewController.xib */; };
 		9D859D701ECAA36400969622 /* TextAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D859D6F1ECAA36400969622 /* TextAlertView.swift */; };
 		9D859D7C1ECAD71900969622 /* LabelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D859D771ECAD71900969622 /* LabelLayout.swift */; };
 		9D859D7D1ECAD71900969622 /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D859D781ECAD71900969622 /* LabelStyle.swift */; };
@@ -32,6 +34,8 @@
 		9D7012D31EC5B60F00F6C8DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D7012D51EC5B60F00F6C8DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D7012DF1EC5B65200F6C8DF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9D73748C1ED58BBB000E1C29 /* ShowTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowTextViewController.swift; path = ../ShowTextViewController.swift; sourceTree = "<group>"; };
+		9D73748D1ED58BBB000E1C29 /* ShowTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowTextViewController.xib; path = ../ShowTextViewController.xib; sourceTree = "<group>"; };
 		9D859D6F1ECAA36400969622 /* TextAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAlertView.swift; sourceTree = "<group>"; };
 		9D859D771ECAD71900969622 /* LabelLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelLayout.swift; sourceTree = "<group>"; };
 		9D859D781ECAD71900969622 /* LabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 				9D859D811ECAD72F00969622 /* Protocl */,
 				9D859D731ECAD71300969622 /* Extension */,
 				9D859D6F1ECAA36400969622 /* TextAlertView.swift */,
+				9D73748C1ED58BBB000E1C29 /* ShowTextViewController.swift */,
+				9D73748D1ED58BBB000E1C29 /* ShowTextViewController.xib */,
 				9D7012DF1EC5B65200F6C8DF /* ViewController.swift */,
 				9D7012C61EC5B60F00F6C8DF /* AppDelegate.swift */,
 				9D7012CA1EC5B60F00F6C8DF /* Main.storyboard */,
@@ -148,6 +154,7 @@
 					9D7012C21EC5B60F00F6C8DF = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = W8ZBWMZ89E;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -178,6 +185,7 @@
 				9D859D801ECAD71900969622 /* TitleLabelViewCell.xib in Resources */,
 				9D7012D41EC5B60F00F6C8DF /* LaunchScreen.storyboard in Resources */,
 				9D7012D11EC5B60F00F6C8DF /* Assets.xcassets in Resources */,
+				9D73748F1ED58BBB000E1C29 /* ShowTextViewController.xib in Resources */,
 				9D7012CC1EC5B60F00F6C8DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D73748E1ED58BBB000E1C29 /* ShowTextViewController.swift in Sources */,
 				9D7012CF1EC5B60F00F6C8DF /* TitleLabelView.xcdatamodeld in Sources */,
 				9D859D851ECAD72F00969622 /* Reusable.swift in Sources */,
 				9D7012C71EC5B60F00F6C8DF /* AppDelegate.swift in Sources */,
@@ -321,12 +330,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = W8ZBWMZ89E;
 				INFOPLIST_FILE = TitleLabelView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.TitleLabelView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -335,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = W8ZBWMZ89E;
 				INFOPLIST_FILE = TitleLabelView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
